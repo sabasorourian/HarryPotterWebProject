@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Avada Kedavra</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<style>
+    * {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 20px;
+    }
+
+    html {
+        cursor: url('../images/magicwand.png') 42 10, pointer;
+    }
+
+    body {
+        background: rgb(46, 139, 87);
+    }
+
+    h1 {
+        background: -webkit-linear-gradient(goldenrod, rgb(46, 163, 97));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 60px;
+        text-align: center;
+        padding: 5px;
+    }
+
+    #gameArea {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        width: 800px;
+        height: 600px;
+        border: 3px solid goldenrod;
+        background-color: rgb(46, 163, 97);
+        position: relative;
+        overflow: hidden;
+        border-radius: 25px;
+    }
+
+    #infoDisplay {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 20px;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    #score {
+        border: 1.5px solid goldenrod;
+        margin: 20px;
+        width: 150px;
+        border-radius: 60px;
+    }
+
+    #startButton {
+        background-color: goldenrod;
+        border: 1px solid rgb(18, 139, 70);
+        margin: 20px;
+        width: 150px;
+        border-radius: 60px;
+    }
+
+    #timer {
+        border: 1.5px solid goldenrod;
+        margin: 20px;
+        width: 150px;
+        border-radius: 60px;
+    }
+
+    #gameStatusDisplay {
+        border: 1.5px solid goldenrod;
+        margin: 20px;
+        width: 150px;
+        border-radius: 60px;
+    }
+
+    .item {
+        position: absolute;
+        content: url(../images/voldemort.png);
+        background: transparent;
+        width: 60px;
+        height: 100px;
+        animation: voldemort 0.5s linear;
+        animation-fill-mode: forwards;
+    }
+
+    .lightning {
+        background: transparent;
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        pointer-events: none;
+        animation: lightningAnimation 1.5s linear;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes lightningAnimation {
+        0% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes voldemort {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+
+<body>
+    <h1>Avada Kedavra</h1>
+    <div id="gameArea"></div>
+    <div id="infoDisplay">
+        <div id="score">Score: 0</div>
+        <div id="startButton" onclick="startGame()">Start Game!</div>
+        <div id="timer">Time: 30</div>
+        <p id="gameStatusDisplay" style="display: none;">Game Over!</p>
+
+        <script src="../script/game.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(document).click(function (event) {
+                    var x = event.clientX;
+                    var y = event.clientY;
+
+                    var lightning = $('<img class="lightning" src="../images/magicsmoke.png">');
+
+                    lightning.css('left', x - 40 + 'px');
+                    lightning.css('top', y - 40 + 'px');
+
+                    $('body').append(lightning);
+
+                    setTimeout(function () {
+                        lightning.remove();
+                    }, 500);
+                });
+            });
+        </script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+
+body {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #740001;
+    gap: 1em;
+    color: #FFC500;
+}
+p {
+    margin: 10px;
+    padding: 10px;
+}
+p#motto {
+    padding: 20px;
+    padding-left: 320px;
+    font-size: 30px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration:dotted;
+    color: orange;
+}
+p#special {
+    text-decoration: none;
+
+    padding: 80px;
+    font-size: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration:dotted;
+    color: black;
+}
+h4 {
+    margin: 10px;
+    padding: 25px;
+}
+h1 {
+    grid-column: 1 / 4;
+    background: -webkit-linear-gradient(#FFC500, #740001);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+h4, p {
+    grid-column: span 2;
+}
+h4:hover {
+    animation: pulse 1s;
+}
+p:hover {
+    /*color: #740001;*/
+    color: #FFC500;
+    text-decoration: underline;
+}
+img {
+    max-width: 450px;
+    border-radius: 10%;
+}
+img#logo, .vidcontainer {
+    grid-column: 3;
+    transition: opacity 1s ease-in-out, transform .2s;
+    opacity: 0;
+    border-radius: 0%;
+}
+img#logo:hover, .vidcontainer:hover {
+    transform: scale(1.05);
+    animation: shake .5s;
+    cursor: pointer;
+}
+div.vidcontainer {
+    margin: 20px;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1) }
+    100% { transform: scale(1); }
+}
+@keyframes shake { /* for all stages*/
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg) }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg) }
+    50% { 
+        transform: translate(-1px, 2px) rotate(-1deg); 
+    }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg) }
+    80% { transform: translate(-1px, -1px) rotate(1deg) }
+    90% { transform: translate(1px, 2px) rotate(0deg) }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+a#backtotop img {
+    width: 100px;
+    height: auto;
+}
+
+#backtotop {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    z-index: 99;
+    text-decoration: none;
+    border: none;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0.6;
+}
+
+#backtotop:hover {
+    opacity: 1.0;
+}
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #511201 !important;
+    }
